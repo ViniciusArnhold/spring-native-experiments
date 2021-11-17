@@ -9,7 +9,10 @@ pluginManagement {
 enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "spring-native-experiments"
-include("reactive-feign-app")
+include(
+    "reactive-feign-app",
+    "cloud-loadbalancer-app"
+)
 
 dependencyResolutionManagement {
     repositories {

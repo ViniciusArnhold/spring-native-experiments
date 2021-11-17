@@ -10,12 +10,13 @@ dependencies {
     }
 
     implementation(libs.spring.boot.starter.webflux)
-    implementation(libs.spring.boot.starter.actuator)
-    implementation(libs.reactive.feign.cloud.starter)
+    implementation(libs.spring.cloud.starter.loadbalancer)
+
+    testImplementation(libs.spring.boot.starter.test)
 }
 
 application {
-    mainClass.set("dev.viniciusarnhold.experiments.aot.app.ReactiveFeignApplication")
+    mainClass.set("dev.viniciusarnhold.experiments.aot.app.CloudLoadbalancerApplication")
 }
 
 springAot {

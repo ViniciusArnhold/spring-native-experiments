@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            github-service:
+              - uri: "https://api.github.com"

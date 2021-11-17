@@ -14,9 +14,6 @@ java {
     consistentResolution {
         useCompileClasspathVersions()
     }
-
-    withJavadocJar()
-    withSourcesJar()
 }
 
 testing {
