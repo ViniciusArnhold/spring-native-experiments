@@ -9,7 +9,7 @@ on:
 
 jobs:
   native-experiments:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -38,4 +38,4 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
-            :${{ experiment-project }}:nativeBuild
+            ":${{ experiment-project }}:nativeBuild"
