@@ -8,20 +8,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  native-experiments:
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        experiment-project: [ cloud-function-app, cloud-loadbalancer-app, kofu, reactive-feign-app ]
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        gu-binary: [ gu, gu.cmd ]
+        exclude:
+          - os: ubuntu-latest
+            gu-binary: gu.cmd
+          - os: macos-latest
+            gu-binary: gu.cmd
+          - os: windows-latest
+            gu-binary: gu
     steps:
       - uses: actions/checkout@v2
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
       - uses: DeLaGuardo/setup-graalvm@5.0
         with:
           graalvm: '21.3.0'
           java: 'java17'
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
+      - name: Install native-image component
+        run: |
+          ${{ matrix.gu-binary }} install native-image
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
-            build
-            nativeBuild
+            :${{ experiment-project }}:nativeBuild
