@@ -1,5 +1,6 @@
 plugins {
     java
+    id("com.diffplug.spotless")
 }
 
 dependencies {
@@ -22,5 +23,18 @@ testing {
         val test by getting(JvmTestSuite::class) {
             useJUnitJupiter("5.8.1")
         }
+    }
+}
+
+spotless {
+    java {
+        importOrder()
+        googleJavaFormat()
+    }
+    kotlin {
+        ktlint()
+    }
+    kotlinGradle {
+        ktlint()
     }
 }

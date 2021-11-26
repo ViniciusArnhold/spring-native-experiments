@@ -9,6 +9,7 @@ on:
 
 jobs:
   native-experiments:
+    name: Build ${{ matrix.experiment-project }} native image on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

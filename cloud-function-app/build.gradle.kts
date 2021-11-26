@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("dev.viniciusarnhold.experiments.aot.app.CloudFunctionApplicationKt")
+    mainClass.set("dev.viniciusarnhold.experiments.aot.app.CloudFunctionApplication")
 }
 
 springAot {
