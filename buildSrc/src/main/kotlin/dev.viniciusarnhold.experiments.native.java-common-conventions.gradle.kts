@@ -1,9 +1,11 @@
 plugins {
     java
     id("com.diffplug.spotless")
+    id("net.ltgt.errorprone")
 }
 
 dependencies {
+    errorprone("com.google.errorprone:error_prone_core:2.10.0")
 }
 
 java {
@@ -29,7 +31,7 @@ testing {
 spotless {
     java {
         importOrder()
-        googleJavaFormat()
+        googleJavaFormat("1.13.0")
     }
     kotlin {
         ktlint()

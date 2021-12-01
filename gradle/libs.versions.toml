@@ -2,9 +2,10 @@
 junit-jupiter = "5.8.1"
 spring-cloud = "2021.0.0-RC1"
 spring-boot = "2.6.0"
-spring-aot = "0.11.0-RC1"
+spring-aot = "0.11.0-SNAPSHOT"
 spring-fu = "0.4.4"
 reactive-feign = "3.1.1"
+assertj = "3.21.0"
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
@@ -22,12 +23,22 @@ spring-cloud-starter-loadbalancer = { module = "org.springframework.cloud:spring
 
 spring-fu-kofu = { module = "org.springframework.fu:spring-fu-kofu", version.ref = "spring-fu" }
 
+reactive-feign-cloud-starter = { module = "com.playtika.reactivefeign:feign-reactor-spring-cloud-starter", version.ref = "reactive-feign" }
+
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 
-reactive-feign-cloud-starter = { module = "com.playtika.reactivefeign:feign-reactor-spring-cloud-starter", version.ref = "reactive-feign" }
+reactor-test = { module = "io.projectreactor:reactor-test" }
+
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 
 [bundles]
 boms-spring = [
     "spring-cloud-dependencies",
     "spring-boot-dependencies"
+]
+
+testing-spring = [
+    "spring-boot-starter-test",
+    "reactor-test",
+    "assertj-core"
 ]

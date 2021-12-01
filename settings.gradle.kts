@@ -13,7 +13,8 @@ include(
     "reactive-feign-app",
     "cloud-loadbalancer-app",
     "cloud-function-app",
-    "kofu"
+    "kofu",
+    "testing"
 )
 
 dependencyResolutionManagement {
